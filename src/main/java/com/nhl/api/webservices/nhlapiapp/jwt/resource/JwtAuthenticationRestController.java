@@ -1,8 +1,8 @@
 package com.nhl.api.webservices.nhlapiapp.jwt.resource;
 
-import com.in28minutes.rest.webservice.restfulwebservices.jwt.JwtTokenResponse;
-import com.in28minutes.rest.webservice.restfulwebservices.jwt.JwtTokenUtil;
-import com.in28minutes.rest.webservice.restfulwebservices.jwt.JwtUserDetails;
+import com.nhl.api.webservices.nhlapiapp.jwt.JwtTokenResponse;
+import com.nhl.api.webservices.nhlapiapp.jwt.JwtTokenUtil;
+import com.nhl.api.webservices.nhlapiapp.jwt.JwtUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

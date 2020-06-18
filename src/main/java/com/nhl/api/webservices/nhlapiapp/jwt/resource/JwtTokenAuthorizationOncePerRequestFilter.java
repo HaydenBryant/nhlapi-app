@@ -1,6 +1,6 @@
 package com.nhl.api.webservices.nhlapiapp.jwt.resource;
 
-import com.in28minutes.rest.webservice.restfulwebservices.jwt.JwtTokenUtil;
+import com.nhl.api.webservices.nhlapiapp.jwt.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

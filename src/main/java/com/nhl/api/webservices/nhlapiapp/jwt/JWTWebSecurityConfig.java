@@ -1,6 +1,6 @@
 package com.nhl.api.webservices.nhlapiapp.jwt;
 
-import com.in28minutes.rest.webservice.restfulwebservices.jwt.resource.JwtTokenAuthorizationOncePerRequestFilter;
+import com.nhl.api.webservices.nhlapiapp.jwt.resource.JwtTokenAuthorizationOncePerRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
