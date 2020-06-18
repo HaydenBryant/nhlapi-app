@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import Login from './Login.jsx'
-import Logout from './Logout.jsx'
-import Welcome from './Welcome.jsx'
+// import Logout from './Logout.jsx'
+// import Welcome from './Welcome.jsx'
 
 
 class HockeyApp extends Component{
