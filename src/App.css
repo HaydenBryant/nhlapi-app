@@ -13,6 +13,25 @@
   }
 }
 
+/* my added stuff */
+.nav {
+  background-color: #000000;
+}
+
+.li {
+  background-color: #FFB81C;
+}
+
+.header-text {
+  color: white;
+}
+
+.img {
+  height: 100px;
+}
+
+/* my added stuff */
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

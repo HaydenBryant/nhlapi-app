@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './bootstrap.css';
-import HockeyApp from './components/HockeyApp.jsx'
+import HockeyApp from './Components/Phase1/HockeyApp.jsx'
 
 class App extends Component {
   render() {
