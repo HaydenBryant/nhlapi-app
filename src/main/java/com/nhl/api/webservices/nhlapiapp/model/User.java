@@ -9,11 +9,10 @@ package com.nhl.api.webservices.nhlapiapp.model;
 
 
 import javax.persistence.*;
-import java.sql.Struct;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class  User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +22,9 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Column(username = "username")
+    private String username;
+
     @Column(name = "email")
     private String email;
 
@@ -31,6 +33,7 @@ public class User {
 
     @Column(name = "favorite_team")
     private String favoriteTeam;
+
 
     public int getId() {
         return id;
