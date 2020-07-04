@@ -26,12 +26,21 @@ class Login extends Component{
         )
     }
 
+    onSubmit = async e => {
+        e.preventDefault();
+        if (password !== password2) {
+          setAlert('Passwords do not match', 'danger');
+        } else {
+          register({ name, email, password });
+        }
+      };
+
     registerClicked() {
         // AuthenticationService
         // .executeJwtAuthenticationService(this.state.username, this.state.password)
         // .then((response) => {
         //     AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
-        //     this.props.history.push(`/welcome/${this.state.username}`)
+        //     this.props.history.push('/login')
         // }).catch( () => {
         //     this.setState({showSuccessMessage:false})
         //     this.setState({hasLoginFailed:true})
@@ -52,6 +61,7 @@ class Login extends Component{
                     User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
                     Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    Please confirm password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                     favoriteTeam: <input type="text" name="favoriteTeam" value={this.state.favoriteTeam} onChange={this.handleChange} />
                     <button className="btn btn-success" onClick={this.loginClicked} >Register</button>
                 </div>
