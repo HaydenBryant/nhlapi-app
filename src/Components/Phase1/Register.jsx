@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthenticationService from "./AuthenticationService";
+import RegistrationService from "../Authentication/RegistrationService";
 
 class Login extends Component{
     constructor(props) {
@@ -10,6 +11,7 @@ class Login extends Component{
             username: '',
             email: '',
             password: '',
+            password2: '',
             favoriteTeam: '',
             showSuccessMessage: false
         }
@@ -61,7 +63,7 @@ class Login extends Component{
                     User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
                     Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    Please confirm password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    Please confirm password: <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange} />
                     favoriteTeam: <input type="text" name="favoriteTeam" value={this.state.favoriteTeam} onChange={this.handleChange} />
                     <button className="btn btn-success" onClick={this.loginClicked} >Register</button>
                 </div>
