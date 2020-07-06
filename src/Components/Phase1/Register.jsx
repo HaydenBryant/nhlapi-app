@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import AuthenticationService from "./AuthenticationService";
+import AuthenticationService from "../Authentication/AuthenticationService";
 import RegistrationService from "../Authentication/RegistrationService";
 
-class Login extends Component{
+class Register extends Component{
     constructor(props) {
         super(props)
 
@@ -28,14 +28,14 @@ class Login extends Component{
         )
     }
 
-    onSubmit = async e => {
-        e.preventDefault();
-        if (password !== password2) {
-          setAlert('Passwords do not match', 'danger');
-        } else {
-          register({ name, email, password });
-        }
-      };
+    // onSubmit = async e => {
+    //     e.preventDefault();
+    //     if (password !== password2) {
+    //       setAlert('Passwords do not match', 'danger');
+    //     } else {
+    //       register({ name, email, password });
+    //     }
+    //   };
 
     registerClicked() {
         // AuthenticationService
@@ -54,7 +54,7 @@ class Login extends Component{
     render() {
         return (
             <div className="container">
-            <h1>Login</h1>
+            <h1>Register</h1>
             <div>
                 {this.state.showSuccessMessage && <div>Registration Successful</div>}
                 {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid inputs</div>}

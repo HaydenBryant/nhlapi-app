@@ -13,14 +13,14 @@ class RegistrationService {
 //try catch
 //does user exist(backend)
     hashPass(password){
-    bcrypt.hash(password, rounds, (err, hash) => {
-        if (err) {
-        console.error(err)
-        return
+        bcrypt.hash(password, rounds, (err, hash) => {
+            if (err) {
+            console.error(err)
+            return
+        }
+        // console.log(hash)
+        });
     }
-    console.log(hash)
-    });
-}
 
 }
 

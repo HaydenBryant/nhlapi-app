@@ -6,6 +6,7 @@ import Footer from './Footer.jsx'
 import Login from './Login.jsx'
 import Logout from './Logout.jsx'
 import Welcome from './Welcome.jsx'
+import Register from "./Register.jsx"
 
 
 class HockeyApp extends Component{
@@ -18,6 +19,7 @@ class HockeyApp extends Component{
                         <Switch>
                             <Route path="/" exact component={Login} />
                             <Route path="/login" component={Login} />
+                            <Route path="/register" component={Register} />
 
                             <AuthenticatedRoute path="/welcome/:name" component={Welcome} />
                             <AuthenticatedRoute path="/logout" component={Logout} />
