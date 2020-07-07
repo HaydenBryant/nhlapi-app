@@ -1,7 +1,6 @@
 import axios from 'axios'
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs'
 
-const rounds = 10
 
 class RegistrationService {
 
@@ -13,12 +12,10 @@ class RegistrationService {
 //try catch
 //does user exist(backend)
     hashPass(password){
-        bcrypt.hash(password, rounds, (err, hash) => {
-            if (err) {
-            console.error(err)
-            return
-        }
-        // console.log(hash)
+        bcryptjs.genSalt(10, function(err, salt) {
+            bcryptjs.hash(password, salt, function(err, hash) {
+                return hash;
+            });
         });
     }
 

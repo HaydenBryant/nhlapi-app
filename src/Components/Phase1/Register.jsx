@@ -17,7 +17,7 @@ class Register extends Component{
         }
 
         this.handleChange = this.handleChange.bind(this)
-        this.registerClicked = this.loginClicked.bind(this)
+        this.registerClicked = this.registerClicked.bind(this)
     }
 
     handleChange(event) {
@@ -65,7 +65,7 @@ class Register extends Component{
                     Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                     Please confirm password: <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange} />
                     favoriteTeam: <input type="text" name="favoriteTeam" value={this.state.favoriteTeam} onChange={this.handleChange} />
-                    <button className="btn btn-success" onClick={this.loginClicked} >Register</button>
+                    <button className="btn btn-success" onClick={this.registerClicked} >Register</button>
                 </div>
             </div>
             </div>
