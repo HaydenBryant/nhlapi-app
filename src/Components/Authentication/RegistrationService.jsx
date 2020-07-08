@@ -1,12 +1,8 @@
-import axios from 'axios'
 import bcryptjs from 'bcryptjs'
+import userDataService from '../../api/user/UserDataService'
 
 
 class RegistrationService {
-
-    //is all information entered correctly
-    
-
 
 //register user
 //try catch
@@ -19,6 +15,11 @@ class RegistrationService {
         });
     }
 
+    registerUser(name, username, email, password, favoriteTeam){
+        var user = [name, username, email, password, favoriteTeam];
+
+
+    }
 }
 
 export default new RegistrationService()

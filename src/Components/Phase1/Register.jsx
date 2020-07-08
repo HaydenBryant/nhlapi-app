@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import AuthenticationService from "../Authentication/AuthenticationService";
 import RegistrationService from "../Authentication/RegistrationService";
 
 class Register extends Component{
@@ -13,7 +12,8 @@ class Register extends Component{
             password: '',
             password2: '',
             favoriteTeam: '',
-            showSuccessMessage: false
+            showSuccessMessage: false,
+            hasRegistrationFailed: false
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -38,16 +38,15 @@ class Register extends Component{
     //   };
 
     registerClicked() {
-        // AuthenticationService
-        // .executeJwtAuthenticationService(this.state.username, this.state.password)
-        // .then((response) => {
-        //     AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
-        //     this.props.history.push('/login')
-        // }).catch( () => {
-        //     this.setState({showSuccessMessage:false})
-        //     this.setState({hasLoginFailed:true})
-        // })
-        
+
+        RegistrationService.hashPass(password)
+        .then( (response) => {
+            RegistrationService.registerUser(this.state.name, this.state.username, this.state.email, response, this.state.favoriteTeam)
+            this.props.history.push('/login')
+        }).catch( () => {
+            this.setState({showSuccessMessage:false})
+            this.setState({hasRegistrationFailed:true})
+        })
     }
 
 
@@ -57,7 +56,7 @@ class Register extends Component{
             <h1>Register</h1>
             <div>
                 {this.state.showSuccessMessage && <div>Registration Successful</div>}
-                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid inputs</div>}
+                {this.state.hasRegistrationFailed && <div className="alert alert-warning">Invalid inputs. Registration failed</div>}
                 <div>
                     Name: <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                     User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
