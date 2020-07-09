@@ -39,14 +39,29 @@ class Register extends Component{
 
     registerClicked() {
 
-        RegistrationService.hashPass(password)
-        .then( (response) => {
-            RegistrationService.registerUser(this.state.name, this.state.username, this.state.email, response, this.state.favoriteTeam)
+        let user = {
+            name: this.state.name,
+            username: this.state.username,
+            email: this.state.email,
+            password: RegistrationService.hashPass(password),
+            favoriteTeam: this.state.favoriteTeam
+        }
+
+        try {
+            RegistrationService.registerUser(user)
             this.props.history.push('/login')
-        }).catch( () => {
+        } catch (error) {
             this.setState({showSuccessMessage:false})
             this.setState({hasRegistrationFailed:true})
-        })
+        }
+        // RegistrationService.hashPass(password)
+        // .then( (response) => {
+        //     RegistrationService.registerUser(this.state.name, this.state.username, this.state.email, response, this.state.favoriteTeam)
+        //     this.props.history.push('/login')
+        // }).catch( () => {
+        //     this.setState({showSuccessMessage:false})
+        //     this.setState({hasRegistrationFailed:true})
+        // })
     }
 
 

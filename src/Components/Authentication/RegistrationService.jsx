@@ -15,8 +15,8 @@ class RegistrationService {
         });
     }
 
-    registerUser(name, username, email, password, favoriteTeam){
-        var user = [name, username, email, password, favoriteTeam];
+    registerUser(user){
+        // var user = [user]
         userDataService.registerUser(user)
     }
 }
