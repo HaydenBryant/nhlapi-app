@@ -43,17 +43,18 @@ class Register extends Component{
             name: this.state.name,
             username: this.state.username,
             email: this.state.email,
-            password: RegistrationService.hashPass(password),
+            password: RegistrationService.hashPass(this.state.password),
             favoriteTeam: this.state.favoriteTeam
         }
+        console.log("register clicked")
 
-        try {
+        // try {
             RegistrationService.registerUser(user)
             this.props.history.push('/login')
-        } catch (error) {
-            this.setState({showSuccessMessage:false})
-            this.setState({hasRegistrationFailed:true})
-        }
+        // } catch (error) {
+        //     this.setState({showSuccessMessage:false})
+        //     this.setState({hasRegistrationFailed:true})
+        // }
         // RegistrationService.hashPass(password)
         // .then( (response) => {
         //     RegistrationService.registerUser(this.state.name, this.state.username, this.state.email, response, this.state.favoriteTeam)

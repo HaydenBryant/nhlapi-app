@@ -1,5 +1,8 @@
 import bcryptjs from 'bcryptjs'
-import userDataService from '../../api/user/UserDataService'
+// import UserDataService from '../../api/user/UserDataService'
+import axios from 'axios'
+import { API_URL } from '../../Constants'
+
 
 
 class RegistrationService {
@@ -17,7 +20,9 @@ class RegistrationService {
 
     registerUser(user){
         // var user = [user]
-        userDataService.registerUser(user)
+        console.log("register user")
+        // UserDataService.registerUser(user)
+        return axios.post(`${API_URL}/register`, user)
     }
 }
 
