@@ -2,6 +2,8 @@ package com.nhl.api.webservices.nhlapiapp.repository;
 
 import com.nhl.api.webservices.nhlapiapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +17,12 @@ public class UserResource {
     private UserRepository userRepository;
 
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user){
+    public ResponseEntity<User> registerUser(@RequestBody User user){
+        System.out.println(user);
 
+        User createdUser = userRepository.save(user);
+
+        return new ResponseEntity<User>(createdUser, HttpStatus.OK);
     }
 
 }
