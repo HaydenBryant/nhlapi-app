@@ -20,9 +20,9 @@ public class UserResource {
     public ResponseEntity<User> registerUser(@RequestBody User user){
         System.out.println(user);
 
-        User createdUser = userRepository.save(user);
+//        User createdUser = userRepository.save(user);
 
-        return new ResponseEntity<User>(createdUser, HttpStatus.OK);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
 }

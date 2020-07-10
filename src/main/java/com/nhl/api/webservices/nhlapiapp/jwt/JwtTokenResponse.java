@@ -1,3 +1,4 @@
+
 package com.nhl.api.webservices.nhlapiapp.jwt;
 
 import java.io.Serializable;
