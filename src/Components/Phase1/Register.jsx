@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import RegistrationService from "../Authentication/RegistrationService";
 import UserDataService from "../../api/user/UserDataService.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup';
 
 class Register extends Component{
     constructor(props) {
@@ -95,39 +96,74 @@ class Register extends Component{
                 <h1>Register</h1>
                 <div className="container">
                     <Formik 
-                            onSubmit={this.registerClicked}
-                            validateOnBlur={false}
-                            validateOnChange={false}
-                            validate={this.validate}
-                            enableReinitialize={true}
+                        initialValues = {{
+                            name: '',
+                            username: '',
+                            email: '',
+                            password: '',
+                            password2: '',
+                            favoriteTeam: ''
+                        }}
+
+                        validationSchema = {Yup.object().shape({
+                            name: Yup.string()
+                                .min(2, 'Name must be longer than 1 character')
+                                .max(75, 'Name cant be more than 75 characters')
+                                .required('Name is required'),
+                            username: Yup.string()
+                                .min(2, 'Username must be longer than 1 character')
+                                .max(75, 'Username cant be more than 75 characters')
+                                .required('Username is required'),
+                            email: Yup.string()
+                                .email('Invalid Email')
+                                .required('Email is required'),
+                            password: Yup.string()
+                                .min(6, 'Password must be at least 6 characters')
+                                .required('Password is required'),
+                            password2: Yup.string()
+                                .oneOf([Yup.ref('password'), null], 'Passwords must match')
+                                .required('Confirm Password is required')
+                        })}
+
+                        onSubmit={this.registerClicked}
+                        validateOnBlur={false}
+                        validateOnChange={false}
+                        validate={this.validate}
+                        enableReinitialize={true}
                     >
-                        {
-                            (props) => (
+                        {({ errors, touched }) => (
                                 <Form>
                                     <fieldset className="form-group">
-                                        <label>Name</label>
-                                        <Field className="form-control" type="text" name="name"/>
+                                        <label htmlFor="name">Name</label>
+                                        <Field className={'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} type="text" name="name"/>
+                                        <ErrorMessage name="name" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Username</label>
-                                        <Field className="form-control" type="text" name="username" />
+                                        <label htmlFor="username">Username</label>
+                                        <Field className={'form-control' + (errors.username && touched.username ? ' is-invalid' : '')} type="text" name="username" />
+                                        <ErrorMessage name="username" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Email</label>
-                                        <Field className="form-control" type="email" name="email"/>
+                                        <label htmlFor="email">Email</label>
+                                        <Field className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} type="email" name="email"/>
+                                        <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Password</label>
-                                        <Field className="form-control" type="password" name="password" />
+                                        <label htmlFor="password">Password</label>
+                                        <Field className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} type="password" name="password" />
+                                        <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Confirm Password</label>
-                                        <Field className="form-control" type="password" name="password2" />
+                                        <label htmlFor="password2">Confirm Password</label>
+                                        <Field className={'form-control' + (errors.password2 && touched.password2 ? ' is-invalid' : '')} type="password" name="password2" />
+                                        <ErrorMessage name="password2" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Favorite Team</label>
-                                        <Field className="form-control" type="text" name="favoriteTeam" />
+                                        <label htmlFor="favoriteTeam">Favorite Team</label>
+                                        <Field className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} type="text" name="favoriteTeam" />
+                                        <ErrorMessage name="favoriteTeam" component="div" className="invalid-feedback" />
                                     </fieldset>
+                                    <button className="btn btn-success" type="submit">Register</button>
                                 </Form>
                             )
                         }
