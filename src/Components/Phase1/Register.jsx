@@ -50,6 +50,7 @@ class Register extends Component{
             favoriteTeam: this.state.favoriteTeam
         }
         console.log("register clicked")
+        console.log(user)
 
         try {
             UserDataService.registerUser(user)
@@ -94,15 +95,17 @@ class Register extends Component{
         return (
             <div>
                 <h1>Register</h1>
+                {this.state.showSuccessMessage && <div>Registration Successful</div>}
+                {this.state.hasRegistrationFailed && <div className="alert alert-warning">Invalid inputs. Registration failed</div>}                
                 <div className="container">
                     <Formik 
                         initialValues = {{
-                            name: '',
-                            username: '',
-                            email: '',
-                            password: '',
-                            password2: '',
-                            favoriteTeam: ''
+                            name: this.state.name,
+                            username: this.state.username,
+                            email: this.state.email,
+                            password: this.state.password,
+                            password2: this.state.password2,
+                            favoriteTeam: this.state.favoriteTeam
                         }}
 
                         validationSchema = {Yup.object().shape({
@@ -124,7 +127,8 @@ class Register extends Component{
                                 .oneOf([Yup.ref('password'), null], 'Passwords must match')
                                 .required('Confirm Password is required')
                         })}
-
+                        
+                        
                         onSubmit={this.registerClicked}
                         validateOnBlur={false}
                         validateOnChange={false}
