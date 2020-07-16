@@ -139,32 +139,32 @@ class Register extends Component{
                                 <Form>
                                     <fieldset className="form-group">
                                         <label htmlFor="name">Name</label>
-                                        <Field className={'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} type="text" name="name"/>
+                                        <Field className={'form-control' + (errors.name && touched.name ? ' is-invalid' : '')} type="text" name="name" onChange={this.handleChange}/>
                                         <ErrorMessage name="name" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="username">Username</label>
-                                        <Field className={'form-control' + (errors.username && touched.username ? ' is-invalid' : '')} type="text" name="username" />
+                                        <Field className={'form-control' + (errors.username && touched.username ? ' is-invalid' : '')} type="text" name="username" onChange={this.handleChange}/>
                                         <ErrorMessage name="username" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="email">Email</label>
-                                        <Field className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} type="email" name="email"/>
+                                        <Field className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} type="email" name="email" onChange={this.handleChange}/>
                                         <ErrorMessage name="email" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="password">Password</label>
-                                        <Field className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} type="password" name="password" />
+                                        <Field className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} type="password" name="password" onChange={this.handleChange}/>
                                         <ErrorMessage name="password" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="password2">Confirm Password</label>
-                                        <Field className={'form-control' + (errors.password2 && touched.password2 ? ' is-invalid' : '')} type="password" name="password2" />
+                                        <Field className={'form-control' + (errors.password2 && touched.password2 ? ' is-invalid' : '')} type="password" name="password2" onChange={this.handleChange}/>
                                         <ErrorMessage name="password2" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="favoriteTeam">Favorite Team</label>
-                                        <Field className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} type="text" name="favoriteTeam" />
+                                        <Field className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} type="text" name="favoriteTeam" onChange={this.handleChange}/>
                                         <ErrorMessage name="favoriteTeam" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Register</button>
