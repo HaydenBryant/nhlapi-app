@@ -44,7 +44,10 @@ public class Parse {
 
     public static Boolean searchRoster(JSONObject team, String playerName) throws JSONException {
         JSONArray roster = team.getJSONArray("roster");
+
+
         System.out.println(roster);
+
 
         Boolean playerFound = false;
 
@@ -62,7 +65,10 @@ public class Parse {
 
     public static long findPlayerIdFromRoster(JSONObject team, String playerName) throws JSONException {
         JSONArray roster = team.getJSONArray("roster");
+
+
         System.out.println(roster);
+
 
         long playerId = 0;
 

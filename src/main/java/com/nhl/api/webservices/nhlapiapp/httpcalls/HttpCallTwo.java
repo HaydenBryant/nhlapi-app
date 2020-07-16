@@ -13,7 +13,7 @@ public class HttpCallTwo {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://statsapi.web.nhl.com/api/v1/people/8476459")).build();
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
-//                .thenApply(Parse::parsePlayer)
+//                .thenApply(Parse::parsePlayer)5
                 .join();
     }
 
