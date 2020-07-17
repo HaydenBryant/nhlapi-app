@@ -18,11 +18,13 @@ public class UserResource {
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user){
-        System.out.println(user);
+//        System.out.println(user);
 
-//        User createdUser = userRepository.save(user);
+        User createdUser = user;
+        System.out.println(createdUser.getName());
 
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
+
 
 }
