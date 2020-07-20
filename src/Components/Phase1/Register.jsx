@@ -164,7 +164,42 @@ class Register extends Component{
                                     </fieldset>
                                     <fieldset className="form-group">
                                         <label htmlFor="favoriteTeam">Favorite Team</label>
-                                        <Field className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} type="text" name="favoriteTeam" onChange={this.handleChange}/>
+
+                                        <select className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} style={{ display: 'block' }} name="favoriteTeam" onChange={this.handleChange}>
+                                            <option value="" label="Select your favorite team" />
+                                            <option value="Boston Bruins" label="Boston Bruins" />
+                                            <option value="Buffalo Sabres" label="Buffalo Sabres" />
+                                            <option value="Detroit Red Wings" label="Detroit Red Wings" />
+                                            <option value="Florida Panthers" label="Florida Panthers" />
+                                            <option value="Montréal Canadiens" label="Montréal Canadiens" />
+                                            <option value="Ottawa Senators" label="Ottawa Senators" />
+                                            <option value="Tampa Bay Lightning" label="Tampa Bay Lightning" />
+                                            <option value="Toronto Maple Leafs" label="Toronto Maple Leafs" />
+                                            <option value="Carolina Hurricanes" label="Carolina Hurricanes" />
+                                            <option value="Columbus Blue Jackets" label="Columbus Blue Jackets" />
+                                            <option value="New Jersey Devils" label="New Jersey Devils" />
+                                            <option value="New York Islanders" label="New York Islanders" />
+                                            <option value="New York Rangers" label="New York Rangers" />
+                                            <option value="Philadelphia Flyers" label="Philadelphia Flyers" />
+                                            <option value="Pittsburgh Penguins" label="Pittsburgh Penguins" />
+                                            <option value="Washington Capitals" label="Washington Capitals" />
+                                            <option value="Chicago Blackhawks" label="Chicago Blackhawks" />
+                                            <option value="Colorado Avalanche" label="Colorado Avalanche" />
+                                            <option value="Dallas Stars" label="Dallas Stars" />
+                                            <option value="Minnesota Wild" label="Minnesota Wild" />
+                                            <option value="Nashville Predators" label="Nashville Predators" />
+                                            <option value="St. Louis Blues" label="St. Louis Blues" />
+                                            <option value="Winnipeg Jets" label="Winnipeg Jets" />
+                                            <option value="Anaheim Ducks" label="Anaheim Ducks" />
+                                            <option value="Arizona Coyotes" label="Arizona Coyotes" />
+                                            <option value="Calgary Flames" label="Calgary Flames" />
+                                            <option value="Edmonton Oilers" label="Edmonton Oilers" />
+                                            <option value="Los Angeles Kings" label="Los Angeles Kings" />
+                                            <option value="San Jose Sharks" label="San Jose Sharks" />
+                                            <option value="Vancouver Canucks" label="Vancouver Canucks" />
+                                            <option value="Vegas Golden Knights" label="Vegas Golden Knights" />
+
+                                        </select>
                                         <ErrorMessage name="favoriteTeam" component="div" className="invalid-feedback" />
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Register</button>
