@@ -1,31 +1,31 @@
 package com.nhl.api.webservices.nhlapiapp.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.nhl.api.webservices.nhlapiapp.model.User;
+
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MySQLConnect {
 
-    public static void connect(String[] args) {
+    public static void connect(User createdUser) {
 
         String url = "jdbc:mysql://localhost/hockey_stats?useSSL=false";
         String user = "root";
-        String password = "passwordMySql!S";
+        String password = "Passwordmsql!";
 
-        String query = "SELECT VERSION()";
+//        String query = "SELECT VERSION()";
+
+        String sql = "INSERT INTO User(name) VALUES(?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(query)) {
 
-            if (rs.next()) {
+             PreparedStatement pst = con.prepareStatement(sql)) {
 
-                System.out.println(rs.getString(1));
-            }
+            pst.setString(1, createdUser.getName());
+            pst.executeUpdate();
+
+            System.out.println("A new user has been inserted");
 
         } catch (SQLException ex) {
 

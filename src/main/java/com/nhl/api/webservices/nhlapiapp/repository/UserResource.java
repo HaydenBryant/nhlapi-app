@@ -1,5 +1,6 @@
 package com.nhl.api.webservices.nhlapiapp.repository;
 
+import com.nhl.api.webservices.nhlapiapp.database.MySQLConnect;
 import com.nhl.api.webservices.nhlapiapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class UserResource {
 
         User createdUser = user;
         System.out.println(createdUser.getName());
+        MySQLConnect.connect(createdUser);
 
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
