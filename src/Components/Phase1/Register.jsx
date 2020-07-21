@@ -91,6 +91,49 @@ class Register extends Component{
     //     )
     // }
 
+    generateTeamOptions(){
+
+            const teams = ["Anaheim Ducks",
+                "Arizona Coyotes",
+                "Boston Bruins",
+                "Buffalo Sabres",
+                "Calgary Flames",
+                "Carolina Hurricanes",
+                "Chicago Blackhawks",
+                "Colorado Avalanche",
+                "Columbus Blue Jackets",
+                "Dallas Stars",
+                "Detroit Red Wings",
+                "Edmonton Oilers",
+                "Florida Panthers",
+                "Los Angeles Kings",
+                "Minnesota Wild",
+                "Montreal Canadiens",
+                "Nashville Predators",
+                "New Jersey Devils",
+                "New York Islanders",
+                "New York Rangers",
+                "Ottawa Senators",
+                "Philadelphia Flyers",
+                "Pittsburgh Penguins",
+                "San Jose Sharks",
+                "St Louis Blues",
+                "Tampa Bay Lightning",
+                "Toronto Maple Leafs",
+                "Vancouver Canucks",
+                "Vegas Golden Knights",
+                "Washington Capitals",
+            "Winnipeg Jets"]
+
+            const teamElements = []
+
+            teams.map(team => {
+                teamElements.push(<option value={team} label={team} />)
+            });
+
+            return teamElements
+    }
+
     render() {
         return (
             <div>
@@ -167,7 +210,7 @@ class Register extends Component{
 
                                         <select className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} style={{ display: 'block' }} name="favoriteTeam" onChange={this.handleChange}>
                                             <option value="" label="Select your favorite team" />
-                                            <option value="Boston Bruins" label="Boston Bruins" />
+                                            {/* <option value="Boston Bruins" label="Boston Bruins" />
                                             <option value="Buffalo Sabres" label="Buffalo Sabres" />
                                             <option value="Detroit Red Wings" label="Detroit Red Wings" />
                                             <option value="Florida Panthers" label="Florida Panthers" />
@@ -197,8 +240,8 @@ class Register extends Component{
                                             <option value="Los Angeles Kings" label="Los Angeles Kings" />
                                             <option value="San Jose Sharks" label="San Jose Sharks" />
                                             <option value="Vancouver Canucks" label="Vancouver Canucks" />
-                                            <option value="Vegas Golden Knights" label="Vegas Golden Knights" />
-
+                                            <option value="Vegas Golden Knights" label="Vegas Golden Knights" /> */}
+                                            {this.generateTeamOptions()}
                                         </select>
                                         <ErrorMessage name="favoriteTeam" component="div" className="invalid-feedback" />
                                     </fieldset>
