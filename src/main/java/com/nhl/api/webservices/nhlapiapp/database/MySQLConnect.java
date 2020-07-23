@@ -8,9 +8,9 @@ import java.util.logging.Logger;
 
 public class MySQLConnect {
 
-    public static void connect(User createdUser) {
+    public static void saveUser(User createdUser) {
 
-        String url = "jdbc:mysql://localhost/hockey_stats?useSSL=false";
+        String url = "jdbc:mysql://localhost:3306/hockey_stats";
         String user = "root";
         String password = "Passwordmsql!";
 
