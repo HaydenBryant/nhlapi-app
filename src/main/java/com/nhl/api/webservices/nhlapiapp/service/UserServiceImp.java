@@ -14,14 +14,15 @@ public class UserServiceImp implements UserService{
     BCryptPasswordEncoder encoder;
 
     @Autowired
+
     static
     UserRepository userRepository;
 
 //    @Override
     public static void saveUser(User user) {
-//        user.setPassword(encoder.encode(user.getPassword()));
-//        System.out.println(user.getPassword());
-        userRepository.save(user);
+        user.setPassword(encoder.encode(user.getPassword()));
+        System.out.println(user.getPassword());
+//        userRepository.save(user);
     }
 
     @Override
