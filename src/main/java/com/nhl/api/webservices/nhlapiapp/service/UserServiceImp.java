@@ -10,19 +10,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class UserServiceImp implements UserService{
 
     @Autowired
-    static
+//    static
     BCryptPasswordEncoder encoder;
 
     @Autowired
 
-    static
+//    static
     UserRepository userRepository;
 
 //    @Override
-    public static void saveUser(User user) {
+    public void saveUser(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
         System.out.println(user.getPassword());
-//        userRepository.save(user);
+        userRepository.save(user);
     }
 
     @Override

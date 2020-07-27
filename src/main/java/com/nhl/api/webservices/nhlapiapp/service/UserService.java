@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    public static void saveUser(User user) {
-
-    }
+    public void saveUser(User user);
 
     public boolean isUserAlreadyPresent(User user);
 
