@@ -19,12 +19,14 @@ import javax.annotation.PostConstruct;
 public class UserResource {
 
 //    @Autowired
-    UserServiceImp userServiceImp;
+//    UserServiceImp userServiceImp;
 
-    @PostConstruct
+
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user){
 //        System.out.println(user);
+
+        UserServiceImp userServiceImp = new UserServiceImp();
 
         User createdUser = user;
         System.out.println(createdUser.getName());
