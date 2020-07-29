@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import AuthenticationService from '../Authentication/AuthenticationService.js'
 import { withRouter } from 'react-router'
-// import nhlLogo from '../../images/nhlLogo.png'
-// import bruinsLogo from '../../images/bruinsLogo.png'
 
 class Header extends Component {
     render() {

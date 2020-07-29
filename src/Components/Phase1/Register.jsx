@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import RegistrationService from "../Authentication/RegistrationService";
 import UserDataService from "../../api/user/UserDataService.js"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup';
@@ -32,15 +31,6 @@ class Register extends Component{
         )
     }
 
-    // onSubmit = async e => {
-    //     e.preventDefault();
-    //     if (password !== password2) {
-    //       setAlert('Passwords do not match', 'danger');
-    //     } else {
-    //       register({ name, email, password });
-    //     }
-    //   };
-
     registerClicked() {
 
         let user = {
@@ -60,37 +50,8 @@ class Register extends Component{
             this.setState({showSuccessMessage:false})
             this.setState({hasRegistrationFailed:true})
         }
-        // RegistrationService.hashPass(password)
-        // .then( (response) => {
-        //     RegistrationService.registerUser(this.state.name, this.state.username, this.state.email, response, this.state.favoriteTeam)
-        //     this.props.history.push('/login')
-        // }).catch( () => {
-        //     this.setState({showSuccessMessage:false})
-        //     this.setState({hasRegistrationFailed:true})
-        // })
     }
 
-
-    // render() {
-    //     return (
-    //         <div className="container">
-    //         <h1>Register</h1>
-    //         <div>
-    //             {this.state.showSuccessMessage && <div>Registration Successful</div>}
-    //             {this.state.hasRegistrationFailed && <div className="alert alert-warning">Invalid inputs. Registration failed</div>}
-    //             <div>
-    //                 Name: <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-    //                 User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-    //                 Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-    //                 Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-    //                 Please confirm password: <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange} />
-    //                 favoriteTeam: <input type="text" name="favoriteTeam" value={this.state.favoriteTeam} onChange={this.handleChange} />
-    //                 <button className="btn btn-success" onClick={this.registerClicked} >Register</button>
-    //             </div>
-    //         </div>
-    //         </div>
-    //     )
-    // }
 
     generateTeamOptions(){
 
@@ -179,37 +140,6 @@ class Register extends Component{
 
                                         <select className={'form-control' + (errors.favoriteTeam && touched.favoriteTeam ? ' is-invalid' : '')} style={{ display: 'block' }} name="favoriteTeam" onChange={this.handleChange}>
                                             <option value="" label="Select your favorite team" />
-                                            {/* <option value="Boston Bruins" label="Boston Bruins" />
-                                            <option value="Buffalo Sabres" label="Buffalo Sabres" />
-                                            <option value="Detroit Red Wings" label="Detroit Red Wings" />
-                                            <option value="Florida Panthers" label="Florida Panthers" />
-                                            <option value="Montréal Canadiens" label="Montréal Canadiens" />
-                                            <option value="Ottawa Senators" label="Ottawa Senators" />
-                                            <option value="Tampa Bay Lightning" label="Tampa Bay Lightning" />
-                                            <option value="Toronto Maple Leafs" label="Toronto Maple Leafs" />
-                                            <option value="Carolina Hurricanes" label="Carolina Hurricanes" />
-                                            <option value="Columbus Blue Jackets" label="Columbus Blue Jackets" />
-                                            <option value="New Jersey Devils" label="New Jersey Devils" />
-                                            <option value="New York Islanders" label="New York Islanders" />
-                                            <option value="New York Rangers" label="New York Rangers" />
-                                            <option value="Philadelphia Flyers" label="Philadelphia Flyers" />
-                                            <option value="Pittsburgh Penguins" label="Pittsburgh Penguins" />
-                                            <option value="Washington Capitals" label="Washington Capitals" />
-                                            <option value="Chicago Blackhawks" label="Chicago Blackhawks" />
-                                            <option value="Colorado Avalanche" label="Colorado Avalanche" />
-                                            <option value="Dallas Stars" label="Dallas Stars" />
-                                            <option value="Minnesota Wild" label="Minnesota Wild" />
-                                            <option value="Nashville Predators" label="Nashville Predators" />
-                                            <option value="St. Louis Blues" label="St. Louis Blues" />
-                                            <option value="Winnipeg Jets" label="Winnipeg Jets" />
-                                            <option value="Anaheim Ducks" label="Anaheim Ducks" />
-                                            <option value="Arizona Coyotes" label="Arizona Coyotes" />
-                                            <option value="Calgary Flames" label="Calgary Flames" />
-                                            <option value="Edmonton Oilers" label="Edmonton Oilers" />
-                                            <option value="Los Angeles Kings" label="Los Angeles Kings" />
-                                            <option value="San Jose Sharks" label="San Jose Sharks" />
-                                            <option value="Vancouver Canucks" label="Vancouver Canucks" />
-                                            <option value="Vegas Golden Knights" label="Vegas Golden Knights" /> */}
                                             {this.generateTeamOptions()}
                                         </select>
                                         <ErrorMessage name="favoriteTeam" component="div" className="invalid-feedback" />
