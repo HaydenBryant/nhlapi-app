@@ -8,29 +8,82 @@ import java.util.logging.Logger;
 
 public class MySQLConnect {
 
-    public static void saveUser(User createdUser) {
+    public void saveUser(User createdUser) {
+//
+//        String url = "jdbc:mysql://localhost:3306/hockey_stats";
+//        String user = "root";
+//        String password = "Passwordmsql!";
+//
+////        String query = "SELECT VERSION()";
+//
+//        String sql = "INSERT INTO User(name) VALUES(?)";
+//
+//        try (Connection con = DriverManager.getConnection(url, user, password);
+//
+//             PreparedStatement pst = con.prepareStatement(sql)) {
+//
+//            pst.setString(1, createdUser.getName());
+//            pst.executeUpdate();
+//
+//            System.out.println("A new user has been inserted");
+//
+//        } catch (SQLException ex) {
+//
+//            Logger lgr = Logger.getLogger(MySQLConnect.class.getName());
+//            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+//        }
 
-        String url = "jdbc:mysql://localhost:3306/hockey_stats";
-        String user = "root";
-        String password = "Passwordmsql!";
+        try
+        {
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/hockeystats?useSSL=false";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
 
-//        String query = "SELECT VERSION()";
+            this.addUser(createdUser, conn);
 
-        String sql = "INSERT INTO User(name) VALUES(?)";
+//            Statement st = conn.createStatement();
 
-        try (Connection con = DriverManager.getConnection(url, user, password);
+//            st.executeUpdate("INSERT INTO users (name, username, email, password, favorite_team) "
+//                    +"VALUES ('Fred', 'Flinstone', 'email@email.com', 'password', 'bruins')");
 
-             PreparedStatement pst = con.prepareStatement(sql)) {
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }
 
-            pst.setString(1, createdUser.getName());
-            pst.executeUpdate();
+    public void addUser(User user, Connection conn)
+            throws SQLException
+    {
+        String query = "INSERT INTO users ("
+                + " name,"
+                + " username,"
+                + " email,"
+                + " password,"
+                + " favorite_team ) VALUES ("
+                + "?, ?, ?, ?, ?)";
 
-            System.out.println("A new user has been inserted");
+        try {
+            // set all the preparedstatement parameters
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, user.getName());
+            st.setString(2, user.getUsername());
+            st.setString(3, user.getEmail());
+            st.setString(4, user.getPassword());
+            st.setString(5, user.getFavoriteTeam());
 
-        } catch (SQLException ex) {
-
-            Logger lgr = Logger.getLogger(MySQLConnect.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+            // execute the preparedstatement insert
+            st.executeUpdate();
+            st.close();
+        }
+        catch (SQLException se)
+        {
+            // log exception
+            throw se;
         }
     }
 }

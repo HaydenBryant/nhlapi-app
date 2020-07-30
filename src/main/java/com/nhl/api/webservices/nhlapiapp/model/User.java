@@ -9,6 +9,7 @@ package com.nhl.api.webservices.nhlapiapp.model;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,14 @@ public class  User {
 
     @Column(name = "name")
     private String name;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Column(name = "username")
     private String username;
@@ -74,4 +83,18 @@ public class  User {
     public void setFavoriteTeam(String favoriteTeam) {
         this.favoriteTeam = favoriteTeam;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(favoriteTeam, user.favoriteTeam);
+    }
+
 }
