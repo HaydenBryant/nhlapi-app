@@ -18,14 +18,8 @@ import javax.annotation.PostConstruct;
 @CrossOrigin(origins="http://localhost:4200")
 public class UserResource {
 
-//    @Autowired
-//    UserServiceImp userServiceImp;
-
-
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user){
-//        System.out.println(user);
-
         UserServiceImp userServiceImp = new UserServiceImp();
 
         User createdUser = user;
