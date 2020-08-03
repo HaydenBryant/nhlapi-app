@@ -7,6 +7,10 @@ class UserDataService {
         console.log("post request")
         return axios.post(`${API_URL}/register`, user)
     }
+
+    loginUser(user){
+        return axios.post(`${API_URL}/login`, user)
+    }
 }
 
 export default new UserDataService()
