@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class JwtInMemoryUserDetailsService implements UserDetailsService {
@@ -46,7 +45,7 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
 
-            String query = "SELECT `users`.`username`, `users`.`password` FROM `hockeystats`.`users`;";
+            String query = "SELECT `users`.`username`, `users`.`id`, `users`.`password` FROM `hockeystats`.`users`;";
 
             Statement st = conn.createStatement();
 
@@ -67,7 +66,7 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
                 }
                 String password = rs.getString("password");
                 System.out.println(password);
-                return new JwtUserDetails(2L, rs.getString("username"),
+                return new JwtUserDetails(rs.getLong("id"), rs.getString("username"),
                         password, "ROLE_USER_2");
             }
 
