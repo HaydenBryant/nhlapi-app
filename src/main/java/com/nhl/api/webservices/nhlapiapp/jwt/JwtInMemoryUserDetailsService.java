@@ -1,8 +1,10 @@
 package com.nhl.api.webservices.nhlapiapp.jwt;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Service
 public class JwtInMemoryUserDetailsService implements UserDetailsService {
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     static List<JwtUserDetails> inMemoryUserList = new ArrayList<>();
 
@@ -51,23 +55,14 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
 
             ResultSet rs = st.executeQuery(query);
 
-            System.out.println(rs);
-
-//            if(rs.getString(username) != null){
-//
-//            }
-
-            System.out.println(username);
             while(rs.next()){
-                System.out.println(rs.getString("username"));
-                if(!(rs.getString("username").matches(username))){
+                if(!(rs.getString("username").matches(username))) {
                     System.out.println("username doesnt match");
                     continue;
                 }
-                String password = rs.getString("password");
-                System.out.println(password);
+
                 return new JwtUserDetails(rs.getLong("id"), rs.getString("username"),
-                        password, "ROLE_USER_2");
+                        rs.getString("password"), "ROLE_USER_2");
             }
 
             conn.close();
