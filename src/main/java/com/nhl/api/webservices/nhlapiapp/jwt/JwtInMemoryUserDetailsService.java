@@ -58,14 +58,17 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
 //
 //            }
 
+            System.out.println(username);
             while(rs.next()){
                 System.out.println(rs.getString("username"));
-                if(rs.getString("username") != username){
+                if(!(rs.getString("username").matches(username))){
                     System.out.println("username doesnt match");
                     continue;
                 }
                 String password = rs.getString("password");
                 System.out.println(password);
+                return new JwtUserDetails(2L, rs.getString("username"),
+                        password, "ROLE_USER_2");
             }
 
             conn.close();
