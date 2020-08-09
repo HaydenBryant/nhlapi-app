@@ -11,6 +11,10 @@ class UserDataService {
     loginUser(user){
         return axios.post(`${API_URL}/login`, user)
     }
+
+    getFavoriteTeam(user){
+        return axios.get(`${API_URL}/favoriteTeam`, user)
+    }
 }
 
 export default new UserDataService()
