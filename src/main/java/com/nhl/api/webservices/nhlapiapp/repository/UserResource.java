@@ -7,10 +7,7 @@ import com.nhl.api.webservices.nhlapiapp.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -23,10 +20,19 @@ public class UserResource {
         UserServiceImp userServiceImp = new UserServiceImp();
 
         User createdUser = user;
-        System.out.println(createdUser.getName());
+//        System.out.println(createdUser.getName());
         userServiceImp.saveUser(createdUser);
 
         return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/favoriteTeam")
+    public String getFavoriteTeam(@RequestBody User user){
+        MySQLConnect mySQLConnect = new MySQLConnect();
+
+        String favoriteTeam = mySQLConnect.getFavoriteTeam(user);
+
+        return favoriteTeam;
     }
 
 

@@ -1,5 +1,6 @@
 package com.nhl.api.webservices.nhlapiapp.database;
 
+import com.nhl.api.webservices.nhlapiapp.jwt.JwtUserDetails;
 import com.nhl.api.webservices.nhlapiapp.model.User;
 
 import java.sql.*;
@@ -57,5 +58,27 @@ public class MySQLConnect {
             throw se;
         }
     }
+
+    public String getFavoriteTeam(User user){
+        try
+        {
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/hockeystats?useSSL=false";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
+
+            String query = "SELECT `users`.`favorite_team` FROM `hockeystats`.`users`;";
+
+            Statement st = conn.createStatement();
+
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }
+
 }
 
