@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.sql.SQLException;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -27,7 +28,7 @@ public class UserResource {
     }
 
     @GetMapping("/favoriteTeam")
-    public String getFavoriteTeam(@RequestBody User user){
+    public String getFavoriteTeam(@RequestBody User user) throws SQLException {
         MySQLConnect mySQLConnect = new MySQLConnect();
 
         String favoriteTeam = mySQLConnect.getFavoriteTeam(user);

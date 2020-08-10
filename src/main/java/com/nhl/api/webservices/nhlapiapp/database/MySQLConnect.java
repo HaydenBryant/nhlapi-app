@@ -1,11 +1,6 @@
 package com.nhl.api.webservices.nhlapiapp.database;
-
-import com.nhl.api.webservices.nhlapiapp.jwt.JwtUserDetails;
 import com.nhl.api.webservices.nhlapiapp.model.User;
-
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MySQLConnect {
 
@@ -59,7 +54,7 @@ public class MySQLConnect {
         }
     }
 
-    public String getFavoriteTeam(User user){
+    public String getFavoriteTeam(User user) throws SQLException{
         try
         {
             String myDriver = "com.mysql.cj.jdbc.Driver";
@@ -67,11 +62,23 @@ public class MySQLConnect {
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
 
-            String query = "SELECT `users`.`favorite_team` FROM `hockeystats`.`users`;";
+//            String query = "SELECT `users`.`favorite_team` FROM `hockeystats`.`users` where username = '';";
+            String query = "SELECT users.favorite_team FROM hockeystats.users where username = ("
+                    + " username ) VALUES ("
+                    + "?)";
 
-            Statement st = conn.createStatement();
+            try{
+                PreparedStatement st = conn.prepareStatement(query);
+                st.setString(1, user.getUsername());
 
-            conn.close();
+                st.executeUpdate();
+                st.close();
+            }
+            catch (SQLException se)
+            {
+                // log exception
+                throw se;
+            }
         }
         catch (Exception e)
         {
