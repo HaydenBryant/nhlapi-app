@@ -7,13 +7,13 @@ import UserDataService from '../../api/user/UserDataService'
 class Header extends Component {
     render() {
         const isUserLoggedIn = AuthenticationService.isUserLoggedIn()
-        const getFavoriteTeam = UserDataService.getFavoriteTeam()
+        // const getFavoriteTeam = UserDataService.getFavoriteTeam()
         return(
             <header>
                 <nav className="navbar navbar-expand-md nav">
                     <ul className="navbar-nav navbar-collapse justify-content-start">
                         {!isUserLoggedIn && <li><img className="img" src={ require('../../images/nhlLogo.png') } /></li>}
-                        {isUserLoggedIn && <li><img className="img" src={ require(`../../images/${getFavoriteTeam}.png`) } /></li>}
+                        {isUserLoggedIn && <li><img className="img" src={ require(`../../images/${UserDataService.getFavoriteTeam()}.png`) } /></li>}
                     </ul>
 
                     <ul className="navbar-nav navbar-collapse justify-content-end li">
