@@ -58,7 +58,7 @@ public class MySQLConnect {
         try
         {
             String myDriver = "com.mysql.cj.jdbc.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/hockeystats?useSSL=false";
+            String myUrl = "jdbc:mysql://localhost:3306/hockeystats?allowPublicKeyRetrieval=true&useSSL=false";
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
 
@@ -85,6 +85,7 @@ public class MySQLConnect {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
+        return "Boston Bruins";
     }
 
 }
