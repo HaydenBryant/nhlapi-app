@@ -12,7 +12,8 @@ class UserDataService {
         return axios.post(`${API_URL}/login`, user)
     }
 
-    getFavoriteTeam(user){
+    getFavoriteTeam(){
+        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
         return axios.get(`${API_URL}/favoriteTeam`, user)
     }
 }
