@@ -1,3 +1,10 @@
+:root {
+  --bruins-primary: #000000;
+  --bruins-secondary: #FFB81C;
+  --bruins-text: white;
+}
+
+
 .App {
   text-align: center;
 }
@@ -15,16 +22,18 @@
 
 /* my added stuff */
 .nav {
-  background-color: #000000;
+  background-color: var(--bruins-primary);
 }
 
 .li {
-  background-color: #FFB81C;
+  background-color: var(--bruins-secondary);
 }
 
 .header-text {
-  color: white;
+  color: var(--bruins-text);
 }
+
+/*  this above will need to change based on favorite team object*/
 
 .img {
   height: 100px;

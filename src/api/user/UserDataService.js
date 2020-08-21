@@ -14,6 +14,7 @@ class UserDataService {
 
     getFavoriteTeam(){
         let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
+        //this needs to send back object with hex code colors for background
         return axios.get(`${API_URL}/favoriteTeam`, user)
     }
 }
