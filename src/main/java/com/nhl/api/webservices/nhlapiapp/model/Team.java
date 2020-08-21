@@ -19,10 +19,21 @@ public class Team {
     private String teamName;
 
     @Column(teamPrimaryColor = "teamPrimaryColor")
-    private String teamPrimaryColor;
+    private int teamPrimaryColor;
 
     @Column(teamSecondaryColor = "teamSecondaryColor")
-    private String teamSecondaryColor;
+    private int teamSecondaryColor;
+
+    public int getTeamTextColor() {
+        return teamTextColor;
+    }
+
+    public void setTeamTextColor(int teamTextColor) {
+        this.teamTextColor = teamTextColor;
+    }
+
+    @Column(teamTextColor = "teamTextColor")
+    private int teamTextColor;
 
     public int getId() {
         return id;
@@ -40,19 +51,19 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public String getTeamPrimaryColor() {
+    public int getTeamPrimaryColor() {
         return teamPrimaryColor;
     }
 
-    public void setTeamPrimaryColor(String teamPrimaryColor) {
+    public void setTeamPrimaryColor(int teamPrimaryColor) {
         this.teamPrimaryColor = teamPrimaryColor;
     }
 
-    public String getTeamSecondaryColor() {
+    public int getTeamSecondaryColor() {
         return teamSecondaryColor;
     }
 
-    public void setTeamSecondaryColor(String teamSecondaryColor) {
+    public void setTeamSecondaryColor(int teamSecondaryColor) {
         this.teamSecondaryColor = teamSecondaryColor;
     }
 }
