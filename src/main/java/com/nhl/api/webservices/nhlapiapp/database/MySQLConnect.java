@@ -1,4 +1,5 @@
 package com.nhl.api.webservices.nhlapiapp.database;
+import com.nhl.api.webservices.nhlapiapp.model.TeamsBasic;
 import com.nhl.api.webservices.nhlapiapp.model.User;
 import java.sql.*;
 
@@ -80,6 +81,38 @@ public class MySQLConnect {
                 throw se;
             }
         }
+        catch (Exception e)
+        {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+
+        try{
+
+            String myDriver = "com.mysql.cj.jdbc.Driver";
+            String myUrl = "jdbc:mysql://localhost:3306/hockeystats?allowPublicKeyRetrieval=true&useSSL=false";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "Passwordmsql!");
+
+            String query = "SELECT team.primaryColor FROM hockeystats.teams_basic where teamName = ("
+                    + " teamName ) VALUES ("
+                    + "?)";
+
+            try{
+                PreparedStatement st = conn.prepareStatement(query);
+                st.setString(1, TeamsBasic.getPrimaryColor());
+
+                st.executeUpdate();
+                st.close();
+            }
+            catch (SQLException se)
+            {
+                // log exception
+                throw se;
+            }
+
+        }
+
         catch (Exception e)
         {
             System.err.println("Got an exception!");
