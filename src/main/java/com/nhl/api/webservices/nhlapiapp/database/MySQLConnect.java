@@ -87,6 +87,10 @@ public class MySQLConnect {
             System.err.println(e.getMessage());
         }
 
+        return "Boston Bruins";
+    }
+
+    public int getTeamColors(String team) throws SQLException {
         try{
 
             String myDriver = "com.mysql.cj.jdbc.Driver";
@@ -118,7 +122,8 @@ public class MySQLConnect {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
-        return "Boston Bruins";
+
+        return 34;
     }
 
 }
